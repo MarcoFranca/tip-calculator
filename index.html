@@ -3,42 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="css/style.css">
+
   <title>Frontend Mentor | Tip calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
+<header>
+  <img src="./images/logo.svg" alt="logo SPLITTER">
+</header>
 
-  Bill
+<main>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+  <div class="calculator">
+    <label for="bill"> Bill</label>
+    <input class="bill-input" id="bill" type="number" >
 
-  Number of People
+    <h2>Select Tip %</h2>
+    <div class="tax">
+      <button class="button-dark">5%</button>
+      <button class="button-dark">10%</button>
+      <button class="button-dark">15%</button>
+      <button class="button-dark">25%</button>
+      <button class="button-dark">50%</button>
+      <input class="button-light" type="number" placeholder="Custom">
+    </div>
 
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    <label for="numPealple"> Number of People</label>
+    <input class="person-input" id="numPealple" type="number" >
   </div>
+  <div class="scream">
+
+    <div class="scream-content">
+      <div class="scream-content-text">
+        <h3>Tip Amount</h3>
+        <p class="text-s">/ person</p>
+      </div>
+      <div class="scream-content-value">
+        $ 45
+      </div>
+    </div>
+
+    <div class="scream-content2">
+      <div class="scream-content-text">
+        <h3>Total</h3>
+        <p class="text-s">/ person</p>
+      </div>
+      <div class="scream-content-value">
+        45
+      </div>
+    </div>
+
+    <button class="button-medium">Reset</button>
+
+  </div>
+</main>
+<footer>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://www.linkedin.com/in/marco-franca/">Marco Tullio França</a>.
+  </div>
+</footer>
 </body>
+<script src="./js/script.js"></script>
 </html>
