@@ -72,6 +72,11 @@ button{
 
 /*end of buttons*/
 
+.errorEmpty{
+    color: rgb(234, 150, 129);
+    text-align: right;
+    font-size: 16px;
+}
 /*end of global*/
 
 body{
@@ -161,7 +166,10 @@ main{
     font-size: 17px;
 }
 
-
+.calculator label{
+    display: flex;
+    justify-content: space-between;
+}
 
 .scream{
     width: calc(50% - 160px);
@@ -202,3 +210,80 @@ main{
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
 
+
+@media screen and (max-width: 414px) {
+
+    main {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .calculator {
+        flex-direction: column;
+        width: calc(100% - 60px);
+        padding: 30px;
+    }
+
+    .tax {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 25px;
+    }
+
+    .calculator h2 {
+        margin-top: 25px;
+    }
+
+    .tax button {
+        width: 45%;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .tax input {
+        width: calc(45% - 15px);
+        margin: 0;
+        height: 50px;
+        border: none;
+        padding-right: 15px;
+    }
+
+    .tax input::placeholder {
+        text-align: center;
+    }
+
+    .calculator label {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .scream {
+        width: calc(80% - 40px);
+        margin: auto;
+        height: 250px;
+        padding: 20px;
+        margin-bottom: 50px;
+    }
+
+    .scream-content {
+        margin-top: 25px ;
+    }
+
+    .scream-content2 {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .scream button {
+        width: 100%;
+        height: 40px;
+        border: none;
+        margin-top: 55px;
+        border-radius: 5px;
+        text-transform: uppercase;
+    }
+}

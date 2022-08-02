@@ -2,37 +2,48 @@
 // dividido pela quantidade de pessoas
 
 
-let conta = prompt("valor da conta")
-let people = prompt("numero de pessoas")
-const tip1 = 0.05;
-const tip2 = 0.1;
-const tip3 = 0.15;
-const tip4 = 0.25;
-const tip5 = 0.50;
-let tip6 = prompt("valor tip")
-let select = 0
-let tip = 0
+function conta(tip) {
+    let conta = document.getElementById('bill');
+    let person = document.getElementById('numPeaple');
+    let customTip = document.getElementById("customTip");
 
-if (select === tip1){
-    tip = conta * tip1
-    alert("valor da gorgeta: " + tip)
-}else if (select === tip2){
-    tip = conta * tip2
-    alert("valor da gorgeta: " + tip)
-}else if (select === tip3){
-    tip = conta * tip3
-    alert("valor da gorgeta: " + tip)
-}else if (select === tip4){
-    tip = conta * tip4
-    alert("valor da gorgeta: " + tip)
-}else if (select === tip5){
-    tip = conta * tip5
-    alert("valor da gorgeta: " + tip)
-}else{
-    tip = conta * tip6
-    alert("valor da gorgeta: " + tip)
+
+    if (conta.value === '' || person.value === '') {
+        document.getElementById("billEmpty").innerHTML=""
+        document.getElementById("peapleEmpty").innerHTML=""
+        if (conta.value === '' && person.value === ''){
+            document.getElementById("billEmpty").innerHTML="Can't be zero"
+            document.getElementById("peapleEmpty").innerHTML="Can't be zero"
+
+        } else if (conta.value === '' && person.value !== '') {
+            document.getElementById("billEmpty").innerHTML="Can't be zero"
+        } else {
+            console.log("pessoa vazio");
+            document.getElementById("peapleEmpty").innerHTML="Can't be zero"
+        }
+    }else {
+        document.getElementById("billEmpty").innerHTML=""
+        document.getElementById("peapleEmpty").innerHTML=""
+
+        if (tip === 0){
+            let tipValue = (customTip.value / 100) * conta.value
+            document.getElementById("tipValue").innerHTML= `$ ${tipValue}`
+
+            let totalPerson = (parseFloat(conta.value) + tipValue)/parseInt(person.value)
+            document.getElementById("personBill").innerHTML= `$ ${totalPerson}`
+        }else{
+            let tipValue = tip * conta.value
+            document.getElementById("tipValue").innerHTML= `$ ${tipValue}`
+
+
+            let totalPerson = (parseFloat(conta.value) + tipValue)/parseInt(person.value)
+            document.getElementById("personBill").innerHTML= `$ ${totalPerson}`
+        }}
 }
 
-totalP = conta + tip / people
+function resetAll() {
+    location.reload()
+}
 
-alert(totalP)
+
+
