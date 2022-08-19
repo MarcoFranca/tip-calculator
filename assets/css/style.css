@@ -126,13 +126,13 @@ main{
 }
 
 .bill-input{
-    background-image: url("../images/icon-dollar.svg");
+    background-image: url("../../images/icon-dollar.svg");
     background-repeat: no-repeat;
     background-position: 5% ;
 }
 
 .person-input{
-    background-image: url("../images/icon-person.svg");
+    background-image: url("../../images/icon-person.svg");
     background-repeat: no-repeat;
     background-position: 5% ;
 }
