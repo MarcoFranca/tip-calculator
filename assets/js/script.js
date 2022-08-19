@@ -20,7 +20,7 @@ send.addEventListener('click',(e)=>{
         billVal = parseFloat(bill.value)
         qtdPeaple = parseFloat(peaple.value)
 
-        tipVal.innerHTML = currency(billVal * tip)
+        tipVal.innerHTML = currency((billVal * tip)/qtdPeaple)
         personBill.innerHTML = currency((billVal + (billVal * tip))/qtdPeaple)
         clearValue()
         if (customTip.value !== ''){
