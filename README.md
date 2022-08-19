@@ -20,7 +20,18 @@ Your users should be able to:
 - See hover states for all interactive elements on the page
 - Calculate the correct tip and total cost of the bill per person
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+----
+
+---
+**to do list**
+
+- [x] pegar o valor da conta digitado no input
+  - [x] validar o valor do input
+- [x] selecionar a taxa a ser paga 
+- [x] pegar a quantidade de pessoas 
+- [x] imprimir as informações
+- [x] fazer o reset ao clicar no botão de reset
+- [x] enviar o formulário 
 
 
 

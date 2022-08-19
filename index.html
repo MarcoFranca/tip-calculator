@@ -20,23 +20,26 @@
 
 <main>
 
-  <div class="calculator">
+  <div id="calculator" class="calculator">
+
     <label for="bill"> Bill <span id="billEmpty" class="errorEmpty"></span></label>
     <input class="bill-input" id="bill" type="number" >
-
     <h2>Select Tip %</h2>
-    <div class="tax">
-      <button onclick="conta(0.05)" class="button-dark">5%</button>
-      <button onclick="conta(0.10)" class="button-dark">10%</button>
-      <button onclick="conta(0.15)" class="button-dark">15%</button>
-      <button onclick="conta(0.25)" class="button-dark">25%</button>
-      <button onclick="conta(0.50)" class="button-dark">50%</button>
-      <input  onblur="conta(0)" id="customTip" class="button-light" type="number" placeholder="Custom">
-    </div>
+
+    <form id="tip" class="tax">
+      <button id="5" class="button-dark">5%</button>
+      <button id="10" class="button-dark">10%</button>
+      <button id="15" class="button-dark">15%</button>
+      <button id="25" class="button-dark">25%</button>
+      <button id="50" class="button-dark">50%</button>
+      <input  id="customTip" class="button-light" type="number" placeholder="Custom">
+    </form>
 
     <label for="numPeaple">Number of People <span id="peapleEmpty" class="errorEmpty"></span></label>
     <input class="person-input" id="numPeaple" type="number" >
+
   </div>
+
   <div class="scream">
 
     <div class="scream-content">
@@ -45,7 +48,6 @@
         <p class="text-s">/ person</p>
       </div>
       <div id="tipValue" class="scream-content-value">
-
       </div>
     </div>
 
@@ -56,10 +58,13 @@
       </div>
       <div id="personBill" class="scream-content-value">
       </div>
+
     </div>
 
-    <button onclick="location.reload()" class="button-medium">Reset</button>
-
+    <div class="buttons">
+      <button id="reset" class="button-medium">Reset</button>
+      <button id="send" class="button-medium">send</button>
+    </div>
   </div>
 </main>
 <footer>

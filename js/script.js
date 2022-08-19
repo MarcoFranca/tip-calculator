@@ -1,49 +1,100 @@
-//clacular o valor da conta com a gorgeta
-// dividido pela quantidade de pessoas
+const form = document.querySelector("#tip")
+const bill =  document.querySelector('#bill')
+const peaple =  document.querySelector('#numPeaple')
+const customTip = form.querySelector("#customTip")
+const send = document.querySelector("#send")
+const tipVal = document.querySelector("#tipValue")
+const personBill = document.querySelector("#personBill")
+const resetButton = document.querySelector("#reset")
 
+let billVal = 0;
+let qtdPeaple = 0;
+let tip = 10 /100;
+let calc = 0;
 
-function conta(tip) {
-    let conta = document.getElementById('bill');
-    let person = document.getElementById('numPeaple');
-    let customTip = document.getElementById("customTip");
+// **** envio dos valores****
 
+send.addEventListener('click',(e)=>{
+    e.preventDefault()
+    if (validate(bill.value, peaple.value, "billEmpty","peapleEmpty")){
+        billVal = parseFloat(bill.value)
+        qtdPeaple = parseFloat(peaple.value)
+        calc = (billVal + (billVal * tip))/qtdPeaple
 
-    if (conta.value === '' || person.value === '') {
-        document.getElementById("billEmpty").innerHTML=""
-        document.getElementById("peapleEmpty").innerHTML=""
-        if (conta.value === '' && person.value === ''){
-            document.getElementById("billEmpty").innerHTML="Can't be zero"
-            document.getElementById("peapleEmpty").innerHTML="Can't be zero"
-
-        } else if (conta.value === '' && person.value !== '') {
-            document.getElementById("billEmpty").innerHTML="Can't be zero"
-        } else {
-            console.log("pessoa vazio");
-            document.getElementById("peapleEmpty").innerHTML="Can't be zero"
+        tipVal.innerHTML = `$ ${String(billVal * tip)}`
+        personBill.innerHTML = `$ ${String(calc)}`
+        clearValue()
+        if (customTip.value !== ''){
+            tip = parseInt(customTip.value) / 100
         }
+    }
+})
+
+// *****pegando valores das taxas de botões*****
+
+form.addEventListener('click', (e)=>{
+    e.preventDefault()
+    if (e.target.id === 'customTip'){
+        e.target.removeEventListener('click',()=>{
+        })
+        customTip.addEventListener('keypress', (e)=>{
+            if (e.key === "Enter"){
+                e.preventDefault()
+            }})
+    }else{
+        tip = e.target.id /100
+        console.log(e.target.id)
+    }
+
+})
+
+// ***** botão de reset******
+
+resetButton.addEventListener('click', ()=>{
+    reset()
+})
+
+
+//****funções****
+
+let clearValue = function () {
+    bill.value = ''
+    peaple.value = ''
+    customTip.value = ''
+}
+
+function reset() {
+    billVal = 0;
+    qtdPeaple = 0;
+    tip = 10 /100;
+    calc = 0;
+    tipVal.innerHTML = ''
+    personBill.innerHTML = ''
+}
+
+function validate(value1, value2,  idAlert, idAlert2) {
+
+    if (value1 === '' || value2 === ''){
+        if (value1 === '' && value2 === ''){
+            document.getElementById(idAlert).innerHTML="Can't be zero"
+            document.getElementById(idAlert2).innerHTML="Can't be zero"
+        }else if (value1 !== '' && value2 === ''){
+            document.getElementById(idAlert2).innerHTML="Can't be zero"
+            document.getElementById(idAlert).innerHTML=""
+        }else {
+            document.getElementById(idAlert).innerHTML="Can't be zero"
+            document.getElementById(idAlert2).innerHTML=""
+        }
+        console.error("Can't be zero")
+        return false
+
     }else {
-        document.getElementById("billEmpty").innerHTML=""
-        document.getElementById("peapleEmpty").innerHTML=""
-
-        if (tip === 0){
-            let tipValue = (customTip.value / 100) * conta.value
-            document.getElementById("tipValue").innerHTML= `$ ${tipValue}`
-
-            let totalPerson = (parseFloat(conta.value) + tipValue)/parseInt(person.value)
-            document.getElementById("personBill").innerHTML= `$ ${totalPerson}`
-        }else{
-            let tipValue = tip * conta.value
-            document.getElementById("tipValue").innerHTML= `$ ${tipValue}`
-
-
-            let totalPerson = (parseFloat(conta.value) + tipValue)/parseInt(person.value)
-            document.getElementById("personBill").innerHTML= `$ ${totalPerson}`
-        }}
+        document.getElementById(idAlert).innerHTML=""
+        document.getElementById(idAlert2).innerHTML=""
+        return true
+    }
 }
 
-function resetAll() {
-    location.reload()
-}
 
 
 
