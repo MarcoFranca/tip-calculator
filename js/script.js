@@ -19,10 +19,9 @@ send.addEventListener('click',(e)=>{
     if (validate(bill.value, peaple.value, "billEmpty","peapleEmpty")){
         billVal = parseFloat(bill.value)
         qtdPeaple = parseFloat(peaple.value)
-        calc = (billVal + (billVal * tip))/qtdPeaple
 
-        tipVal.innerHTML = `$ ${String(billVal * tip)}`
-        personBill.innerHTML = `$ ${String(calc)}`
+        tipVal.innerHTML = currency(billVal * tip)
+        personBill.innerHTML = currency((billVal + (billVal * tip))/qtdPeaple)
         clearValue()
         if (customTip.value !== ''){
             tip = parseInt(customTip.value) / 100
@@ -37,31 +36,34 @@ form.addEventListener('click', (e)=>{
     if (e.target.id === 'customTip'){
         e.target.removeEventListener('click',()=>{
         })
-        customTip.addEventListener('keypress', (e)=>{
-            if (e.key === "Enter"){
-                e.preventDefault()
+        customTip.addEventListener('keyup', (e)=>{
+            if (e.target.value.length > 3 || e.target.value > 100){
+                tip = e.target.value = 100
+                console.error("o valor só pode ir até 100%")
+            }else {
+                tip = e.target.value / 100
             }})
     }else{
         tip = e.target.id /100
-        console.log(e.target.id)
     }
 
 })
 
 // ***** botão de reset******
 
-resetButton.addEventListener('click', ()=>{
-    reset()
-})
-
+resetButton.addEventListener('click', ()=>{reset()})
 
 //****funções****
 
-let clearValue = function () {
+// ******reiniciar os valores do input****
+
+const clearValue = function () {
     bill.value = ''
     peaple.value = ''
     customTip.value = ''
 }
+
+// ******reiniciar todos os valores*****
 
 function reset() {
     billVal = 0;
@@ -71,6 +73,8 @@ function reset() {
     tipVal.innerHTML = ''
     personBill.innerHTML = ''
 }
+
+//*******Validar se os campos estão vazios*******
 
 function validate(value1, value2,  idAlert, idAlert2) {
 
@@ -95,6 +99,17 @@ function validate(value1, value2,  idAlert, idAlert2) {
     }
 }
 
+// ******formatação das moedas****
 
+const currency = function(number){
+    return new Intl.NumberFormat('en-br',
+        {style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2}).format(number);
+};
 
-
+bill.addEventListener('keyup', (e)=>{
+    if (e.target.value.length > 9 || e.target.value > 999999.99)
+        e.target.value = 999999.99
+    currency(e.target.value)
+})

@@ -191,7 +191,10 @@ main{
 
 .scream-content-value{
     color: #26c2ad;
-    font-size: 36px;
+    font-size: 23px;
+    max-width: 222px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .scream-content2{
@@ -285,6 +288,10 @@ main{
         display: flex;
         justify-content: space-between;
         margin-top: 30px;
+    }
+
+    .scream-content-value{
+        max-width: 207px;
     }
 
     .scream button {
